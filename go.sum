@@ -148,6 +148,8 @@ github.com/bradenaw/juniper v0.15.2 h1:0JdjBGEF2jP1pOxmlNIrPhAoQN7Ng5IMAY5D0PHMW
 github.com/bradenaw/juniper v0.15.2/go.mod h1:UX4FX57kVSaDp4TPqvSjkAAewmRFAfXf27BOs5z9dq8=
 github.com/bradfitz/iter v0.0.0-20191230175014-e8f45d346db8 h1:GKTyiRCL6zVf5wWaqKnf+7Qs6GbEPfd4iMOitWzXJx8=
 github.com/bradfitz/iter v0.0.0-20191230175014-e8f45d346db8/go.mod h1:spo1JLcs67NmW1aVLEgtA8Yy1elc+X8y5SRW1sFW4Og=
+github.com/brk0v/directio v0.0.0-20190225130936-69406e757cf7 h1:7gNKWnX6OF+ERiXVw4I9RsHhZ52aumXdFE07nEx5v20=
+github.com/brk0v/directio v0.0.0-20190225130936-69406e757cf7/go.mod h1:M/KA3XJG5PJaApPiv4gWNsgcSJquOQTqumZNLyYE0KM=
 github.com/buengese/sgzip v0.1.1 h1:ry+T8l1mlmiWEsDrH/YHZnCVWD2S3im1KLsyO+8ZmTU=
 github.com/buengese/sgzip v0.1.1/go.mod h1:i5ZiXGF3fhV7gL1xaRRL1nDnmpNj0X061FQzOS8VMas=
 github.com/bwesterb/go-ristretto v1.2.0/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
@@ -375,6 +377,10 @@ github.com/henrybear327/Proton-API-Bridge v1.0.0/go.mod h1:gunH16hf6U74W2b9CGDaW
 github.com/henrybear327/go-proton-api v1.0.0 h1:zYi/IbjLwFAW7ltCeqXneUGJey0TN//Xo851a/BgLXw=
 github.com/henrybear327/go-proton-api v1.0.0/go.mod h1:w63MZuzufKcIZ93pwRgiOtxMXYafI8H74D77AxytOBc=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
+github.com/hunshcn/directio v0.0.0-20241024114023-e05cca4c126d h1:TDqECGCCsl9pkYQv2z92ITHntgGN04CTft+WkF5vNAk=
+github.com/hunshcn/directio v0.0.0-20241024114023-e05cca4c126d/go.mod h1:C35RA+R1Uli1gHZqcd8LxD5zK6/vhBmJMy6sXd6VjAU=
+github.com/hunshcn/directio v0.0.0-20241024120248-dda76c166801 h1:asnpmb3x/i37wtwHQXS5mhuRPxNBuzxgAW7MnQgjAvw=
+github.com/hunshcn/directio v0.0.0-20241024120248-dda76c166801/go.mod h1:C35RA+R1Uli1gHZqcd8LxD5zK6/vhBmJMy6sXd6VjAU=
 github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=

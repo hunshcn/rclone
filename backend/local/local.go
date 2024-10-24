@@ -14,8 +14,12 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
+	"syscall"
 	"time"
 	"unicode/utf8"
+
+	"github.com/hunshcn/directio"
+	"golang.org/x/text/unicode/norm"
 
 	"github.com/rclone/rclone/fs"
 	"github.com/rclone/rclone/fs/accounting"
@@ -28,7 +32,6 @@ import (
 	"github.com/rclone/rclone/lib/encoder"
 	"github.com/rclone/rclone/lib/file"
 	"github.com/rclone/rclone/lib/readers"
-	"golang.org/x/text/unicode/norm"
 )
 
 // Constants
@@ -272,6 +275,12 @@ enabled, rclone will no longer update the modtime after copying a file.`,
 				Advanced: true,
 			},
 			{
+				Name:     "direct_io",
+				Help:     `Using direct I/O will bypass the kernel's page cache for file I/O.`,
+				Default:  false,
+				Advanced: true,
+			},
+			{
 				Name: "time_type",
 				Help: `Set what kind of time is returned.
 
@@ -333,6 +342,7 @@ type Options struct {
 	NoPreAllocate     bool                 `config:"no_preallocate"`
 	NoSparse          bool                 `config:"no_sparse"`
 	NoSetModTime      bool                 `config:"no_set_modtime"`
+	DirectIO          bool                 `config:"direct_io"`
 	TimeType          timeType             `config:"time_type"`
 	Enc               encoder.MultiEncoder `config:"encoding"`
 	NoClone           bool                 `config:"no_clone"`
@@ -1382,7 +1392,11 @@ func (o *Object) Update(ctx context.Context, in io.Reader, src fs.ObjectInfo, op
 	// If it is a translated link, just read in the contents, and
 	// then create a symlink
 	if !o.translatedLink {
-		f, err := file.OpenFile(o.path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
+		flags := os.O_WRONLY | os.O_CREATE | os.O_TRUNC
+		if o.fs.opt.DirectIO {
+			flags |= syscall.O_DIRECT
+		}
+		f, err := file.OpenFile(o.path, flags, 0666)
 		if err != nil {
 			if runtime.GOOS == "windows" && os.IsPermission(err) {
 				// If permission denied on Windows might be trying to update a
@@ -1408,6 +1422,9 @@ func (o *Object) Update(ctx context.Context, in io.Reader, src fs.ObjectInfo, op
 			}
 		}
 		out = f
+		if o.fs.opt.DirectIO {
+			out, err = directio.NewSize(f, 4*1024*1024)
+		}
 	} else {
 		out = nopWriterCloser{&symlinkData}
 	}
