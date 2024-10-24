@@ -381,6 +381,8 @@ github.com/hunshcn/directio v0.0.0-20241024114023-e05cca4c126d h1:TDqECGCCsl9pkY
 github.com/hunshcn/directio v0.0.0-20241024114023-e05cca4c126d/go.mod h1:C35RA+R1Uli1gHZqcd8LxD5zK6/vhBmJMy6sXd6VjAU=
 github.com/hunshcn/directio v0.0.0-20241024120248-dda76c166801 h1:asnpmb3x/i37wtwHQXS5mhuRPxNBuzxgAW7MnQgjAvw=
 github.com/hunshcn/directio v0.0.0-20241024120248-dda76c166801/go.mod h1:C35RA+R1Uli1gHZqcd8LxD5zK6/vhBmJMy6sXd6VjAU=
+github.com/hunshcn/directio v0.0.0-20241024133557-f54542cbe8d0 h1:mxQsgs30B6uV7rymS0yaQwB5MqrZYln473UjUz1XZhM=
+github.com/hunshcn/directio v0.0.0-20241024133557-f54542cbe8d0/go.mod h1:C35RA+R1Uli1gHZqcd8LxD5zK6/vhBmJMy6sXd6VjAU=
 github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
