@@ -438,6 +438,10 @@ func NewFs(ctx context.Context, name, root string, m configmap.Mapper) (fs.Fs, e
 		// Disable server-side copy when --local-no-clone is set
 		f.features.Copy = nil
 	}
+	if opt.DirectIO {
+		// Disable multi-thread copy when --local-direct-io is set
+		f.features.OpenWriterAt = nil
+	}
 
 	// Check to see if this points to a file
 	fi, err := f.lstat(f.root)
@@ -1423,7 +1427,6 @@ func (o *Object) Update(ctx context.Context, in io.Reader, src fs.ObjectInfo, op
 		}
 		out = f
 		if o.fs.opt.DirectIO {
-			fs.Debugf(o, "%s Using direct IO", o.path)
 			out, err = directio.NewSize(f, 4*1024*1024)
 			if err != nil {
 				_ = f.Close()
@@ -1507,6 +1510,9 @@ var sparseWarning sync.Once
 //
 // It truncates any existing object
 func (f *Fs) OpenWriterAt(ctx context.Context, remote string, size int64) (fs.WriterAtCloser, error) {
+	if f.opt.DirectIO {
+		return nil, errors.New("can't open a file for random writing with direct IO")
+	}
 	// Temporary Object under construction
 	o := f.newObject(remote)
 
