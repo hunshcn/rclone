@@ -1423,7 +1423,12 @@ func (o *Object) Update(ctx context.Context, in io.Reader, src fs.ObjectInfo, op
 		}
 		out = f
 		if o.fs.opt.DirectIO {
+			fs.Debugf(o, "%s Using direct IO", o.path)
 			out, err = directio.NewSize(f, 4*1024*1024)
+			if err != nil {
+				_ = f.Close()
+				return err
+			}
 		}
 	} else {
 		out = nopWriterCloser{&symlinkData}
